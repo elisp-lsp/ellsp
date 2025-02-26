@@ -57,16 +57,16 @@ Then install the language server:
 
 ```sh
 # Install ellsp package.
-$ eask install-deps --dev
+eask install-deps --dev
 
 # Install the proxy server.
-$ eask exec install-ellsp
+eask exec install-ellsp
 ```
 
 To test to see if the server installed successfully, execute the following command:
 
 ```sh
-$ eask exec ellsp
+eask exec ellsp
 ```
 
 If you see the following screen (no error), you successfully installed the language server! 🎉🥳
@@ -86,17 +86,17 @@ To test the language server locally:
 
 ```sh
 # Add link to current package
-$ eask link add ellsp ./
+eask link add ellsp ./
 ```
 
 Then follow the same steps as installation:
 
 ```sh
 # Install the proxy server.
-$ eask exec install-ellsp
+eask exec install-ellsp
 
 # Test the language server.
-$ eask exec ellsp
+eask exec ellsp
 ```
 
 ## 🔗 References
