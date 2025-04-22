@@ -1,3 +1,5 @@
+;; -*- mode: eask; lexical-binding: t -*-
+
 (package "ellsp"
          "0.2.0"
          "Elisp Language Server")
