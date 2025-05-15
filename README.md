@@ -47,6 +47,8 @@ Before installation, make sure you have all the following software installed!
 Add these lines to your `Eask`-file:
 
 ```elisp
+(source 'gnu)
+(source 'melpa)
 (source 'jcs-elpa)
 
 (development
