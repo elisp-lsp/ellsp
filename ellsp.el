@@ -6,7 +6,7 @@
 ;; Maintainer: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; URL: https://github.com/elisp-lsp/ellsp
 ;; Version: 0.2.0
-;; Package-Requires: ((emacs "27.1") (lsp-mode "6.0.1") (log4e "0.1.0") (dash "2.14.1") (s "1.12.0") (company "0.8.12") (msgu "0.1.0"))
+;; Package-Requires: ((emacs "28.1") (lsp-mode "6.0.1") (log4e "0.1.0") (dash "2.14.1") (s "1.12.0") (company "0.8.12") (msgu "0.1.0"))
 ;; Keywords: convenience lsp
 
 ;; This file is not part of GNU Emacs.
