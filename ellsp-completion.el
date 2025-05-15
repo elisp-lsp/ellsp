@@ -62,13 +62,13 @@
           (file (lsp--uri-to-path uri))
           (buffer (ellsp-get-buffer ellsp-workspace file)))
     (ellsp-current-buffer buffer
-                          (forward-line line)
-                          (forward-char character)
-                          (lsp--make-response
-                           id
-                           (lsp-make-completion-list
-                            :is-incomplete json-false
-                            :items (apply #'vector (ellsp--capf-completions)))))))
+      (forward-line line)
+      (forward-char character)
+      (lsp--make-response
+       id
+       (lsp-make-completion-list
+        :is-incomplete json-false
+        :items (apply #'vector (ellsp--capf-completions)))))))
 
 (provide 'ellsp-completion)
 ;;; ellsp-completion.el ends here
