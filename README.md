@@ -16,7 +16,7 @@ Here is the list of currently supported editors:
 - [Emacs]() (`M-x ellsp-register`)
 - [VSCode](https://marketplace.visualstudio.com/items?itemName=jcs090218.Ellsp)
 
-## ❓ Rationale
+## ✒️ Rationale
 
 This software is intended to support editors beyond Emacs, targeting users who
 wish to work with Emacs Lisp in a more performant and responsive environment.
