@@ -16,6 +16,19 @@ Here is the list of currently supported editors:
 - [Emacs]() (`M-x ellsp-register`)
 - [VSCode](https://marketplace.visualstudio.com/items?itemName=jcs090218.Ellsp)
 
+## ❓ Rationale
+
+This software is intended to support editors beyond Emacs, targeting users who
+wish to work with Emacs Lisp in a more performant and responsive environment.
+Due to its single-threaded architecture, Emacs can become unresponsive when
+executing computationally intensive tasks.
+
+A strong reference implementation is Emacs [Elsa][], which utilizes the Language
+Server Protocol (LSP) to delegate static analysis and other heavy operations
+to a separate Emacs process. This decoupling not only improves responsiveness
+in the primary editor but also enables parallelism, making large-scale analysis
+more practical.
+
 ## 🖼️ Gallery
 
 ### Completion
@@ -103,8 +116,8 @@ eask exec ellsp
 
 ## 🔗 References
 
-- [Language Server Protocol Specification](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/)
-- [Elsa](https://github.com/emacs-elsa/Elsa)
+- [Language Server Protocol Specification][LSP Specification]
+- [Elsa][]
 
 ## Contribute
 
@@ -134,3 +147,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 See [`LICENSE`](./LICENSE) for details.
+
+
+<!-- Links -->
+
+[LSP Specification]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/
+[Elsa]: https://github.com/emacs-elsa/Elsa
