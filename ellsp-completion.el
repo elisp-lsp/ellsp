@@ -36,15 +36,10 @@
   (or (cl-position (capitalize kind) lsp-completion--item-kind :test #'equal)
       lsp/completion-item-kind-text))
 
-;; TODO: The implementation here with `company' is deprecated, we need to
-;; either do:
-;;
-;;   - Upgrade to use the newest `company'
-;;   - Stop relying on `company'
 (defun ellsp--capf-completions ()
   "Fallback completions engine is the `elisp-completion-at-point'."
   (let* ((prefix (company-capf 'prefix))
-         (candidates (company-capf 'candidates prefix)))
+         (candidates (apply #'company-capf (cons 'candidates prefix))))
     (mapcar (lambda (candidate)
               (lsp-make-completion-item
                :label candidate
@@ -67,13 +62,13 @@
           (file (lsp--uri-to-path uri))
           (buffer (ellsp-get-buffer ellsp-workspace file)))
     (ellsp-current-buffer buffer
-      (forward-line line)
-      (forward-char character)
-      (lsp--make-response
-       id
-       (lsp-make-completion-list
-        :is-incomplete json-false
-        :items (apply #'vector (ellsp--capf-completions)))))))
+                          (forward-line line)
+                          (forward-char character)
+                          (lsp--make-response
+                           id
+                           (lsp-make-completion-list
+                            :is-incomplete json-false
+                            :items (apply #'vector (ellsp--capf-completions)))))))
 
 (provide 'ellsp-completion)
 ;;; ellsp-completion.el ends here
