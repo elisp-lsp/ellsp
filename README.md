@@ -8,8 +8,8 @@
 [![CI Elisp](https://github.com/elisp-lsp/ellsp/actions/workflows/test-elisp.yml/badge.svg)](https://github.com/elisp-lsp/ellsp/actions/workflows/test-elisp.yml)
 [![Build Proxy](https://github.com/elisp-lsp/ellsp/actions/workflows/build-proxy.yml/badge.svg)](https://github.com/elisp-lsp/ellsp/actions/workflows/build-proxy.yml)
 
-This software is designed to be used with editors other than Emacs. If you are
-an Emacs user already, I prefer you use Emacs directly.
+This software is intended for use with editors other than Emacs.
+If you're already an Emacs user, we recommend using Emacs directly.
 
 Here is the list of currently supported editors:
 
