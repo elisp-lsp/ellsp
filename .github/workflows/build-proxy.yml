@@ -22,7 +22,21 @@ env:
   VERSION: 0.2.0
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: jcs-actions/delete-tag-and-release@master
+      if: github.ref == 'refs/heads/master'
+      continue-on-error: true
+      with:
+        delete_release: true
+        tag_name: ${{ env.VERSION }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
+
   build:
+    needs: [prepare]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
