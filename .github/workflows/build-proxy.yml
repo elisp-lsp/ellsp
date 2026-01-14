@@ -126,13 +126,14 @@ jobs:
 
     - name: Upload for prerelease
       if: github.ref == 'refs/heads/master'
-      uses: softprops/action-gh-release@v2.5.0
+      uses: ncipollo/release-action@v1.20.0
       with:
-        tag_name: ${{ env.VERSION }}
         token: ${{ secrets.PAT }}
+        tag: ${{ env.VERSION }}
+        allowUpdates: true
         prerelease: true
         draft: false
-        files: proxy/ellsp_${{ matrix.target }}.${{ env._EXT }}
+        artifacts: proxy/ellsp_${{ matrix.target }}.${{ env._EXT }}
 
     #### Upload an artifact for testing purposes
 
