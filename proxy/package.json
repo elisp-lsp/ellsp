@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/elisp-lsp/ellsp#readme",
   "dependencies": {
-    "which": "^6.0.0"
+    "which": "^6.0.1"
   },
   "devDependencies": {
     "@yao-pkg/pkg": "^6.12.0"
