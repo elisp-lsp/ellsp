@@ -9,9 +9,9 @@
 [![Build Proxy](https://github.com/elisp-lsp/ellsp/actions/workflows/build-proxy.yml/badge.svg)](https://github.com/elisp-lsp/ellsp/actions/workflows/build-proxy.yml)
 
 This software is intended for use with editors other than Emacs.
-If you're already an Emacs user, we recommend using Emacs directly
-with both ‘company-mode’ and ‘flycheck-mode’ which are available in
-Emacs out of the box.
+If you're already an Emacs user, we recommend using Emacs directly,
+taking advantage of commands like ‘company-mode’, ‘flycheck-mode’ and
+more, that are available in Emacs out of the box.
 
 Here is the list of currently supported editors:
 
