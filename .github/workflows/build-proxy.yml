@@ -93,7 +93,7 @@ jobs:
       if: contains(fromJSON('["tar.gz"]'), matrix.ext)
       run: |
         chmod -R 777 ./bin/
-        chmod -R 777 ./dist
+        chmod -R 777 ./proxy/dist
 
     - name: Tar dist (Unix)
       if: contains(fromJSON('["tar.gz"]'), matrix.ext)
