@@ -41,13 +41,25 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target:
-        - linux-arm64
-        - linux-x64
-        - macos-arm64
-        - macos-x64
-        - win-arm64
-        - win-x64
+        include:
+        - target: linux-arm64
+          ext: tar.gz
+          exe:
+        - target: linux-x64
+          ext: tar.gz
+          exe:
+        - target: macos-arm64
+          ext: tar.gz
+          exe:
+        - target: macos-x64
+          ext: tar.gz
+          exe:
+        - target: win-arm64
+          ext: zip
+          exe: .exe
+        - target: win-x64
+          ext: zip
+          exe: .exe
 
     steps:
     - uses: actions/checkout@v6
@@ -69,60 +81,35 @@ jobs:
       working-directory: proxy
       run: npm run-script pkg-${{ matrix.target }}
 
-    - name: Prepare content... (Unix)
-      if: contains(fromJSON('["linux-arm64", "linux-x64", "macos-arm64", "macos-x64"]'), matrix.target)
+    - name: Prepare content...
       working-directory: proxy
       run: |
         mkdir dist
         mv LICENSE dist
         mv README.md dist
-        mv ../bin/ellsp dist
-
-    - name: Prepare content... (Windows)
-      if: contains(fromJSON('["win-arm64", "win-x64"]'), matrix.target)
-      working-directory: proxy
-      run: |
-        mkdir dist
-        mv LICENSE dist
-        mv README.md dist
-        mv ../bin/ellsp.exe dist
-
-    - name: Setup environment (Unix)
-      if: contains(fromJSON('["linux-arm64", "linux-x64", "macos-arm64", "macos-x64"]'), matrix.target)
-      run: |
-        echo "_EXT=tar.gz" >> $GITHUB_ENV
-
-    - name: Setup environment (Windows)
-      if: contains(fromJSON('["win-arm64", "win-x64"]'), matrix.target)
-      run: |
-        echo "_EXT=zip" >> $GITHUB_ENV
+        mv ../bin/ellsp${{ matrix.exe }} dist
 
     - name: Change permissions (Unix)
-      if: contains(fromJSON('["linux-arm64", "linux-x64", "macos-arm64", "macos-x64"]'), matrix.target)
+      if: contains(fromJSON('["tar.gz"]'), matrix.ext)
       run: |
         chmod -R 777 ./bin/
-
-    - name: Change permissions (Unix)
-      if: contains(fromJSON('["linux-arm64", "linux-x64", "macos-arm64", "macos-x64"]'), matrix.target)
-      working-directory: proxy
-      run: |
         chmod -R 777 ./dist
 
     - name: Tar dist (Unix)
-      if: contains(fromJSON('["linux-arm64", "linux-x64", "macos-arm64", "macos-x64"]'), matrix.target)
+      if: contains(fromJSON('["tar.gz"]'), matrix.ext)
       working-directory: proxy
       run: |
-        tar czf ${{ matrix.target }}.${{ env._EXT }} -C ./dist/ .
-        cp ${{ matrix.target }}.${{ env._EXT }} ellsp_${{ matrix.target }}.${{ env._EXT }}
+        tar czf ${{ matrix.target }}.${{ matrix.ext }} -C ./dist/ .
+        cp ${{ matrix.target }}.${{ matrix.ext }} ellsp_${{ matrix.target }}.${{ matrix.ext }}
 
     - name: Zipping dist (Windows)
-      if: contains(fromJSON('["win-arm64", "win-x64"]'), matrix.target)
+      if: contains(fromJSON('["zip"]'), matrix.ext)
       working-directory: proxy/dist
       run: |
-        zip -r ${{ matrix.target }}.${{ env._EXT }} .
-        mv ${{ matrix.target }}.${{ env._EXT }} ../
+        zip -r ${{ matrix.target }}.${{ matrix.ext }} .
+        mv ${{ matrix.target }}.${{ matrix.ext }} ../
         cd ..
-        cp ${{ matrix.target }}.${{ env._EXT }} ellsp_${{ matrix.target }}.${{ env._EXT }}
+        cp ${{ matrix.target }}.${{ matrix.ext }} ellsp_${{ matrix.target }}.${{ matrix.ext }}
 
     - name: Upload for prerelease
       if: github.ref == 'refs/heads/master'
@@ -133,7 +120,7 @@ jobs:
         allowUpdates: true
         prerelease: true
         draft: false
-        artifacts: proxy/ellsp_${{ matrix.target }}.${{ env._EXT }}
+        artifacts: proxy/ellsp_${{ matrix.target }}.${{ matrix.ext }}
 
     #### Upload an artifact for testing purposes
 
@@ -141,4 +128,4 @@ jobs:
       uses: actions/upload-artifact@v6
       with:
         name: ${{ matrix.target }}
-        path: proxy/ellsp_${{ matrix.target }}.${{ env._EXT }}
+        path: proxy/ellsp_${{ matrix.target }}.${{ matrix.ext }}
