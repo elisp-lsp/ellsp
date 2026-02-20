@@ -15,7 +15,7 @@ more, that are available in Emacs out of the box.
 
 Here is the list of currently supported editors:
 
-- [Emacs]() (`M-x ellsp-register`)
+- [Emacs][] via [lsp-ellsp](https://github.com/elisp-lsp/lsp-ellsp)
 - [VSCode](https://marketplace.visualstudio.com/items?itemName=jcs090218.Ellsp)
 
 ## ✒️ Rationale
@@ -152,6 +152,8 @@ See [`LICENSE`](./LICENSE) for details.
 
 
 <!-- Links -->
+
+[Emacs]: https://www.gnu.org/software/emacs/
 
 [LSP Specification]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/
 [Elsa]: https://github.com/emacs-elsa/Elsa
