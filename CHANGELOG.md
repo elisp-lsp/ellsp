@@ -4,10 +4,11 @@ All notable changes to the "vscode-shader" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+
 ## 0.2.0 (Unreleased)
 > Released N/A
 
-- N/A
+- feat: Split client to its own package ([`#37`](../../pull/37))
 
 ## 0.1.0
 > Released Jan 08, 2025
